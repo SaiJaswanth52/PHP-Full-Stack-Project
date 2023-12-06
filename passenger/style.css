@@ -1,0 +1,41 @@
+.navigation {color: green;}
+
+.bg-color {background-color: black; height: 100vh;}   
+.bg-admincolor {background-color:antiquewhite; height: 100vh;}
+.bg-usercolor {background-color:rgb(215, 250, 231); height: 100vh;}
+
+.para {color:aqua; font-size: 20px;}
+
+/*.about-color{background-color: rgb(109, 103, 110); height:300vh;} */
+
+.admin{background-color: pink;text-align: center; height: 50vh;}
+.card{ border-style: solid; border-radius: 10px; border-color: azure;
+    display: inline-block;
+    text-align: left;
+    padding:10px;
+    margin:10px;
+    background-color: white;
+    color:black;
+    font-size: larger;
+    width:250px;
+    height:100px;
+    padding:35px;
+}
+.button{ background-color: orange; color: black;}
+
+.user{background-color: rgb(182, 182, 236);text-align: center; height: 50vh;}
+.card{ border-style: solid; border-radius: 10px; border-color: azure;
+    display: inline-block;
+    text-align: left;
+    padding:10px;
+    margin:10px;
+    background-color: white;
+    color:black;
+    font-size: larger;
+    width:350px;
+    height:300px;
+    padding:35px;
+}
+#logout{
+    text-align: right;
+}

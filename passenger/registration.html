@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+</head>
+<body class="user">
+    <link rel="stylesheet" href="style.css">
+    <div>
+    <a href="../index.php">Home</a>
+    </div>
+    <div class="card">
+        <div>
+            <h1>User Registration</h1>
+        </div>
+    <form action="user_registration.php" method="post" onsubmit="return checkAdmin()" autocomplete="off">
+        <label>UserName</label> <br>
+        <input type="text" id="username" name="username" placeholder="Enter UserName" required><br>
+        <label>Password</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required><br>
+        <label>Email</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter Email" required><br>
+
+        <button type="submit" id="Signin" name="Signin" class="button">Sign In</button>
+    </form>
+        
+    </div>
+    <p id='msg'></p>
+
+    <script src="script.js"> </script>
+    
+    <script type="text/javascript" src="jquery-3.7.1.js"></script>
+    <script type="text/javascript">
+    
+    $(document).ready(function () {
+    
+        $("#username").on('blur', function () {
+            var username = $(this).val();
+            console.log(username);
+    
+            $.getJSON("getjson_user.php", function (data) {
+                if (data.length === 0) {
+            console.log("No data received from getjson.php");
+            return;
+        }
+                var samename = false;
+    
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].username === username) {
+                        samename = true;
+                        break;
+                    }
+                }
+    
+                if (samename) {
+                    $("#msg").css("color", "red").text("Same Username Exist! Please choose another.");
+                } else {
+                    $("#msg").css("color", "blue").text("You can use the username");
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+</head>
+<body class="admin">
+    <link rel="stylesheet" href="style.css">
+    <div>
+    <a href="../index.php">Home</a> <br>
+    </div>
+    <div class="card">
+        <div>
+            <h1>Admin Login</h1>
+        </div>
+        <form action="admin_login.php" method="post" autocomplete="off">
+        <label>UserName</label> <br>
+        <input type="text" id="username" name="username" placeholder="Enter UserName" required><br>
+        <label>Password</label><br>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required><br>
+        <button type="submit" id="Submit" name="Submit" class="button">Submit</button> <br>
+        <a href="admin_register.php">Register Here</a>
+
+        </form>
+    </div>
+    
+    <p id='msg'></p>
+
+<script src="script.js"> </script>
+
+<script type="text/javascript" src="jquery-3.7.1.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+
+    $("#username").on('blur', function () {
+        var username = $(this).val();
+        //console.log(username);
+
+        $.getJSON("getjson_admin.php", function (data) {
+            if (data.length === 0) {
+        console.log("No data received from getjson.php");
+        return;
+    }
+            var samename = false;
+
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].username === username) {
+                    samename = true;
+                    break;
+                }
+            }
+
+            if (samename) {
+                $("#msg").css("color", "red").text("Yes username matches.");
+            } else {
+                $("#msg").css("color", "blue").text("Username not found");
+            }
+        });
+    });
+});
+</script>
+
+    
+</body>
+</html>
